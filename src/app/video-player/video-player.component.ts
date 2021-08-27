@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  faPlay,
+  faVolumeUp,
+  faClosedCaptioning,
+  faExpand,
+  faEllipsisH,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-video-player',
@@ -15,7 +22,12 @@ export class VideoPlayerComponent implements OnInit {
   seconds!: number;
   progress!: number;
   video!: any;
-
+  fullScreenEnabled = !!document.fullscreenEnabled;
+  faPlay = faPlay;
+  faVolumeUp = faVolumeUp;
+  faClosedCaptioning = faClosedCaptioning;
+  faExpand = faExpand;
+  faEllipsisH = faEllipsisH;
   constructor() {}
 
   ngOnInit(): void {
@@ -62,5 +74,5 @@ export class VideoPlayerComponent implements OnInit {
     }
   }
 
-  fullScreen() {}
+  handleFullScreen() {}
 }

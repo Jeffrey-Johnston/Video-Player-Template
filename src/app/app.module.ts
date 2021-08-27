@@ -5,18 +5,12 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    VideoPlayerComponent
-  ],
-  imports: [
-    BrowserModule,
-    NgbModule
-  ],
+  declarations: [AppComponent, HeaderComponent, VideoPlayerComponent],
+  imports: [BrowserModule, NgbModule, FontAwesomeModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

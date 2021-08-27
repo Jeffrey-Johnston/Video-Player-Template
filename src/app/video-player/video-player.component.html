@@ -1,64 +1,88 @@
-<figure id="videoContainer">
-  <video
-    id="videoPlayer"
-    controls
-    preload="metadata"
-    (loadedmetadata)="setVideoLength()"
-    (timeupdate)="progressStatus()"
-  >
-    <source
-      src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
-      type="video/mp4"
-    />
-    <source
-      src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.webm"
-      type="video/webm"
-    />
-    <source
-      src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.ogg"
-      type="video/ogg"
-    />
-    <object
-      type="application/x-shockwave-flash"
-      data="https://jsoncompare.org/LearningContainer/SampleFiles/Video/MP4/Sample-MP4-Video-File-for-Testing.mp4"
+<section class="backdrop">
+  <figure id="videoContainer">
+    <video
+      id="videoPlayer"
+      controls
+      preload="metadata"
+      (loadedmetadata)="setVideoLength()"
+      (timeupdate)="progressStatus()"
     >
-      <param
-        name="movie"
-        value="flash-player.swf?videoUrl=video/tears-of-steel-battle-clip-medium.mp4"
+      <source
+        src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
+        type="video/mp4"
       />
-      <param name="allowfullscreen" value="true" />
-      <param name="wmode" value="transparent" />
-      <param
-        name="flashvars"
-        value="controlbar=over&amp;image=img/poster.jpg&amp;file=flash-player.swf?videoUrl=video/tears-of-steel-battle-clip-medium.mp4"
+      <source
+        src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.webm"
+        type="video/webm"
       />
-      <!-- <img alt="" src="" width="1024" height="428" /> -->
-    </object>
-  </video>
-  <ul>
-    <li>
-      <button (click)="playPause()">Play/Pause</button>
-    </li>
-    <li>
-      <span *ngIf="minutes < 10">0</span>{{ minutes }}:<span
-        *ngIf="seconds < 10"
-        >0</span
-      >{{ seconds }}/<span *ngIf="videoMinutes < 10">0</span
-      >{{ videoMinutes }}:<span *ngIf="videoSeconds < 10">0</span
-      >{{ videoSeconds }}
-    </li>
-    <li>
-      <progress id="progress" value="{{ progress }}" min="0">
-        <span id="progress-bar"></span>
-      </progress>
-    </li>
-    <li>
-      <button (click)="mute()">Volume</button>
-    </li>
-    <li>CC</li>
-    <li>
-      <span (click)="fullScreen()">[ ]</span>
-    </li>
-    <li></li>
-  </ul>
-</figure>
+      <source
+        src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.ogg"
+        type="video/ogg"
+      />
+      <object
+        type="application/x-shockwave-flash"
+        data="https://jsoncompare.org/LearningContainer/SampleFiles/Video/MP4/Sample-MP4-Video-File-for-Testing.mp4"
+      >
+        <param
+          name="movie"
+          value="flash-player.swf?videoUrl=video/tears-of-steel-battle-clip-medium.mp4"
+        />
+        <param name="allowfullscreen" value="true" />
+        <param name="wmode" value="transparent" />
+        <param
+          name="flashvars"
+          value="controlbar=over&amp;image=img/poster.jpg&amp;file=flash-player.swf?videoUrl=video/tears-of-steel-battle-clip-medium.mp4"
+        />
+        <!-- <img alt="" src="" width="1024" height="428" /> -->
+      </object>
+    </video>
+
+    <div id="video-controls" class="controls" data-state="visible">
+      <ul>
+        <li>
+          <button (click)="playPause()">
+            <fa-icon class="icon" [icon]="faPlay"></fa-icon>
+          </button>
+        </li>
+        <li class="duration">
+          <span *ngIf="minutes < 10">0</span>{{ minutes }}:<span
+            *ngIf="seconds < 10"
+            >0</span
+          >{{ seconds }}/<span *ngIf="videoMinutes < 10">0</span
+          >{{ videoMinutes }}:<span *ngIf="videoSeconds < 10">0</span
+          >{{ videoSeconds }}
+        </li>
+        <li>
+          <progress
+            class="progress"
+            id="progress"
+            value="{{ progress }}"
+            min="0"
+          >
+            <span id="progress-bar"></span>
+          </progress>
+        </li>
+        <li>
+          <button (click)="mute()">
+            <fa-icon class="icon" [icon]="faVolumeUp"></fa-icon>
+          </button>
+        </li>
+        <li>
+          <button>
+            <fa-icon class="icon" [icon]="faClosedCaptioning"></fa-icon>
+          </button>
+        </li>
+        <li>
+          <button id="fs" type="button" (click)="handleFullScreen()">
+            <fa-icon class="icon" [icon]="faExpand"></fa-icon>
+          </button>
+        </li>
+        <li>
+          <button id="fs" type="button">
+            <fa-icon class="icon" [icon]="faEllipsisH"></fa-icon>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </figure>
+</section>

@@ -1,32 +1,89 @@
-ul {
-  list-style-type: none;
-}
-
-li {
-  float: left;
-}
-
 figure {
-  width: 100vw;
-  height: auto;
-
-  background-color: #666;
+  position: absolute;
+  left: 50%;
+  top: 7rem;
+  transform: translate(-50%, 0);
+  width: 95vw;
+  max-width: 700px;
 }
 
 video {
   width: 100%;
 }
+
+.icon {
+  color: #eeeeee;
+}
+
 .controls {
   width: 100%;
-  height: 8.0971659919028340080971659919028%;
-  position: relative;
+  height: 100%;
+  margin-top: -0.5rem;
+  // margin-left: 0.1953125%;
+  color: #eeeeee;
+  background-color: #2e2e38;
 }
 
-#progress {
-  width: 35rem;
-  height: 1rem;
+.controls :first-child {
+  margin-left: 0;
 }
 
-#progress-bar {
-  width: 1%;
+.progress {
+  height: 4px;
+  width: 55vw;
+  max-width: 25rem;
+}
+
+.controls .progress {
+  cursor: pointer;
+}
+
+.controls button {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.controls button:hover,
+.controls button:focus {
+  opacity: 0.5;
+}
+
+.controls progress span {
+  width: 0%;
+  height: 0.2px;
+  display: inline-block;
+  background-color: #eeeeee;
+}
+
+.controls progress::-moz-progress-bar {
+  background-color: #eeeeee;
+}
+
+.controls progress::-webkit-progress-value {
+  background-color: #eeeeee;
+}
+
+ul {
+  height: 2rem;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+}
+
+li {
+  width: auto;
+  float: left;
+}
+
+.duration {
+  font-size: 12px;
+}
+
+video::-webkit-media-controls {
+  display: none !important;
 }
