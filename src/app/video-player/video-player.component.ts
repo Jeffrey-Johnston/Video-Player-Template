@@ -29,6 +29,7 @@ export class VideoPlayerComponent implements OnInit {
   //* progress bar
   progress!: number;
   percentage!: number;
+
   //* icons
   faPlay = faPlay;
   faPause = faPause;
@@ -36,12 +37,13 @@ export class VideoPlayerComponent implements OnInit {
   faClosedCaptioning = faClosedCaptioning;
   faExpand = faExpand;
   faEllipsisH = faEllipsisH;
+
+  supposedCurrentTime: number = 0;
   constructor() {}
 
   ngOnInit(): void {
     this.video = document.getElementById('videoPlayer');
     this.progressBar = document.getElementById('progress');
-    this.progressStatus();
   }
 
   playPause() {
@@ -71,6 +73,25 @@ export class VideoPlayerComponent implements OnInit {
     } else {
       this.progress = this.video.currentTime / this.video.duration;
     }
+
+    if (!this.video.seeking) {
+      this.supposedCurrentTime = this.video.currentTime;
+    }
+  }
+  // prevent user from seeking
+  seekingStatus() {
+    // guard agains infinite recursion:
+    // user seeks, seeking is fired, currentTime is modified, seeking is fired, current time is modified, ....
+    var delta = this.video.currentTime - this.supposedCurrentTime;
+    if (Math.abs(delta) > 0.01) {
+      console.log('Seeking is disabled');
+      this.video.currentTime = this.supposedCurrentTime;
+    }
+  }
+  // delete the following event handler if rewind is not required
+  videoEnded() {
+    // reset state in order to allow for rewind
+    this.supposedCurrentTime = 0;
   }
 
   setVideoLength() {
@@ -88,7 +109,6 @@ export class VideoPlayerComponent implements OnInit {
     const progressTime =
       (e.offsetX / this.progressBar.offsetWidth) * this.video.duration;
     this.video.currentTime = progressTime;
-    console.log(progressTime);
   }
 
   handleFullScreen() {}

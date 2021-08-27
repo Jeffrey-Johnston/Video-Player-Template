@@ -6,6 +6,8 @@
       preload="metadata"
       (loadedmetadata)="setVideoLength()"
       (timeupdate)="progressStatus()"
+      (seeking)="seekingStatus()"
+      (ended)="videoEnded()"
     >
       <source
         src="assets\video\Kevin Gates Back In Blood (Music Video).mp4"

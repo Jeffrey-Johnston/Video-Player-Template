@@ -1,5 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
-* {
+*,
+body,
+html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -8,3 +10,9 @@
 body {
   font-family: "Roboto", sans-serif;
 }
+
+$primary-color: #2e2e38;
+$secondary-color: #eee;
+
+$primary-text: #eee;
+$secondary-text: #2e2e38;
