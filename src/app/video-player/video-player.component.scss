@@ -11,27 +11,38 @@ video {
   width: 100%;
 }
 
-.icon {
-  color: #eeeeee;
+.icon-group {
+  display: flex;
+  align-items: center;
 }
 
 .controls {
-  width: 100%;
-  height: 100%;
   margin-top: -0.5rem;
-  // margin-left: 0.1953125%;
-  color: #eeeeee;
   background-color: #2e2e38;
 }
 
 .controls :first-child {
-  margin-left: 0;
+  margin-left: 0.25rem;
+}
+// .controls :last-child {
+//   margin-right: 0;
+// }
+
+.icon {
+  color: #eeeeee;
+  margin: 0 1rem;
+  font-size: 16px;
+}
+
+.progress-container {
+  width: 40vw;
 }
 
 .progress {
   height: 4px;
-  width: 55vw;
+  width: 40vw;
   max-width: 25rem;
+  margin: 0 1rem;
 }
 
 .controls .progress {

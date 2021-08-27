@@ -8,9 +8,10 @@
       (timeupdate)="progressStatus()"
       (seeking)="seekingStatus()"
       (ended)="videoEnded()"
+      (click)="playPause()"
     >
       <source
-        src="assets\video\Kevin Gates Back In Blood (Music Video).mp4"
+        src="assets\video\Rick Astley - Never Gonna Give You Up (Official Music Video).mp4"
         type="video/mp4"
       />
       <source
@@ -41,51 +42,73 @@
 
     <div id="video-controls" class="controls" data-state="visible">
       <ul>
-        <li>
-          <button (click)="playPause()">
-            <fa-icon *ngIf="!isPlay" class="icon" [icon]="faPlay"></fa-icon>
-            <fa-icon *ngIf="isPlay" class="icon" [icon]="faPause"></fa-icon>
-          </button>
-        </li>
-        <li class="duration">
-          <span *ngIf="minutes < 10">0</span>{{ minutes }}:<span
-            *ngIf="seconds < 10"
-            >0</span
-          >{{ seconds }}/<span *ngIf="videoMinutes < 10">0</span
-          >{{ videoMinutes }}:<span *ngIf="videoSeconds < 10">0</span
-          >{{ videoSeconds }}
-        </li>
-        <li>
-          <progress
-            class="progress"
-            id="progress"
-            value="{{ progress }}"
-            min="0"
-            (click)="onProgressBarClick($event)"
-          >
-            <span id="progress-bar"></span>
-          </progress>
-        </li>
-        <li>
-          <button (click)="mute()">
-            <fa-icon class="icon" [icon]="faVolumeUp"></fa-icon>
-          </button>
-        </li>
-        <li>
-          <button>
-            <fa-icon class="icon" [icon]="faClosedCaptioning"></fa-icon>
-          </button>
-        </li>
-        <li>
-          <button id="fs" type="button" (click)="handleFullScreen()">
-            <fa-icon class="icon" [icon]="faExpand"></fa-icon>
-          </button>
-        </li>
-        <li>
-          <button id="fs" type="button">
-            <fa-icon class="icon" [icon]="faEllipsisH"></fa-icon>
-          </button>
-        </li>
+        <div class="icon-group">
+          <li>
+            <button (click)="playPause()">
+              <fa-icon *ngIf="!isPlay" class="icon" [icon]="faPlay"></fa-icon>
+              <fa-icon *ngIf="isPlay" class="icon" [icon]="faPause"></fa-icon>
+            </button>
+          </li>
+          <li>
+            <button (click)="restart()">
+              <fa-icon class="icon" [icon]="faUndo"></fa-icon>
+            </button>
+          </li>
+          <li>
+            <button (click)="skip(-30)">
+              <fa-icon class="icon" [icon]="faStepBackward"></fa-icon>
+            </button>
+          </li>
+          <li>
+            <button (click)="skip(30)">
+              <fa-icon class="icon" [icon]="faStepForward"></fa-icon>
+            </button>
+          </li>
+        </div>
+        <div class="icon-group">
+          <li class="duration icon">
+            <span *ngIf="minutes < 10">0</span>{{ minutes }}:<span
+              *ngIf="seconds < 10"
+              >0</span
+            >{{ seconds }}/<span *ngIf="videoMinutes < 10">0</span
+            >{{ videoMinutes }}:<span *ngIf="videoSeconds < 10">0</span
+            >{{ videoSeconds }}
+          </li>
+          <li>
+            <progress
+              class="progress"
+              id="progress"
+              value="{{ progress }}"
+              min="0"
+              (click)="onProgressBarClick($event)"
+            >
+              <span id="progress-bar"></span>
+            </progress>
+          </li>
+        </div>
+        <div class="icon-group">
+          <li>
+            <button (click)="mute()">
+              <fa-icon class="icon" [icon]="faVolumeUp"></fa-icon>
+            </button>
+          </li>
+          <li>
+            <button>
+              <fa-icon class="icon" [icon]="faClosedCaptioning"></fa-icon>
+            </button>
+          </li>
+          <li>
+            <button id="fs" type="button" (click)="handleFullScreen()">
+              <fa-icon class="icon" [icon]="faExpand"></fa-icon>
+            </button>
+          </li>
+
+          <li>
+            <button id="fs" type="button">
+              <fa-icon class="icon" [icon]="faEllipsisH"></fa-icon>
+            </button>
+          </li>
+        </div>
       </ul>
     </div>
   </figure>

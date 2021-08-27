@@ -6,6 +6,9 @@ import {
   faClosedCaptioning,
   faExpand,
   faEllipsisH,
+  faUndo,
+  faStepBackward,
+  faStepForward,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -17,18 +20,23 @@ export class VideoPlayerComponent implements OnInit {
   //* state
   isPlay: boolean = false;
   fullScreenEnabled = !!document.fullscreenEnabled;
+  completionStatus: boolean = false;
+
   //* elementas
   video!: any;
   progressBar!: any;
+
   //* progress counter
   totalSeconds!: number;
   videoSeconds!: number;
   videoMinutes!: number;
   minutes!: number;
   seconds!: number;
+
   //* progress bar
   progress!: number;
   percentage!: number;
+  supposedCurrentTime: number = 0;
 
   //* icons
   faPlay = faPlay;
@@ -37,13 +45,16 @@ export class VideoPlayerComponent implements OnInit {
   faClosedCaptioning = faClosedCaptioning;
   faExpand = faExpand;
   faEllipsisH = faEllipsisH;
+  faUndo = faUndo;
+  faStepBackward = faStepBackward;
+  faStepForward = faStepForward;
 
-  supposedCurrentTime: number = 0;
   constructor() {}
 
   ngOnInit(): void {
     this.video = document.getElementById('videoPlayer');
     this.progressBar = document.getElementById('progress');
+    this.progressStatus();
   }
 
   playPause() {
@@ -55,12 +66,22 @@ export class VideoPlayerComponent implements OnInit {
       this.video.pause();
     }
   }
+  restart() {
+    this.video.currentTime = 0;
+    this.video.pause();
+    this.isPlay = false;
+  }
+
+  skip(seconds: number) {
+    this.video.currentTime = this.video.currentTime + seconds;
+  }
 
   mute() {
     this.video.muted = !this.video.muted;
   }
 
   progressStatus() {
+    //* timer
     this.totalSeconds = this.video.currentTime;
     this.minutes = Math.floor(this.totalSeconds / 60);
     if (this.totalSeconds >= 60) {
@@ -68,30 +89,26 @@ export class VideoPlayerComponent implements OnInit {
     } else {
       this.seconds = Math.floor(this.totalSeconds);
     }
+    //* progress bar
     if (this.video.currentTime === 0) {
       this.progress = 0;
     } else {
       this.progress = this.video.currentTime / this.video.duration;
     }
-
-    if (!this.video.seeking) {
+    //* sets current time to 0 onInit
+    if (!this.video.seeking && this.completionStatus === false) {
       this.supposedCurrentTime = this.video.currentTime;
     }
   }
-  // prevent user from seeking
+
   seekingStatus() {
-    // guard agains infinite recursion:
-    // user seeks, seeking is fired, currentTime is modified, seeking is fired, current time is modified, ....
-    var delta = this.video.currentTime - this.supposedCurrentTime;
-    if (Math.abs(delta) > 0.01) {
-      console.log('Seeking is disabled');
+    if (this.video.currentTime - this.supposedCurrentTime > 0.01) {
       this.video.currentTime = this.supposedCurrentTime;
     }
   }
-  // delete the following event handler if rewind is not required
   videoEnded() {
-    // reset state in order to allow for rewind
-    this.supposedCurrentTime = 0;
+    this.completionStatus = true;
+    this.isPlay = false;
   }
 
   setVideoLength() {
