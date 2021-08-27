@@ -8,7 +8,7 @@
       (timeupdate)="progressStatus()"
     >
       <source
-        src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
+        src="assets\video\Kevin Gates Back In Blood (Music Video).mp4"
         type="video/mp4"
       />
       <source
@@ -41,7 +41,8 @@
       <ul>
         <li>
           <button (click)="playPause()">
-            <fa-icon class="icon" [icon]="faPlay"></fa-icon>
+            <fa-icon *ngIf="!isPlay" class="icon" [icon]="faPlay"></fa-icon>
+            <fa-icon *ngIf="isPlay" class="icon" [icon]="faPause"></fa-icon>
           </button>
         </li>
         <li class="duration">
@@ -58,6 +59,7 @@
             id="progress"
             value="{{ progress }}"
             min="0"
+            (click)="onProgressBarClick($event)"
           >
             <span id="progress-bar"></span>
           </progress>
@@ -86,3 +88,5 @@
     </div>
   </figure>
 </section>
+
+<progress id="test" max="10" value="5"></progress>
