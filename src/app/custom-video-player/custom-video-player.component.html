@@ -3,7 +3,6 @@
   <section [ngClass]="completionStatus ? 'complete' : 'incomplete'">
     <video
       id="videoPlayer"
-      controls
       preload="metadata"
       (loadedmetadata)="setVideoLength()"
       (timeupdate)="progressStatus()"
@@ -86,9 +85,7 @@
               <span id="progress-bar"></span>
             </progress>
           </li>
-        </div>
-        <div class="icon-group">
-          <li>
+          <li class="volume">
             <button (click)="mute()">
               <fa-icon
                 *ngIf="!isMute"
@@ -102,6 +99,10 @@
               ></fa-icon>
             </button>
           </li>
+        </div>
+
+        <div class="icon-group">
+          <li class="icon"></li>
           <li>
             <button>
               <fa-icon class="icon" [icon]="faClosedCaptioning"></fa-icon>

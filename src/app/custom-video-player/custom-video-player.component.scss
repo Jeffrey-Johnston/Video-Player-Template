@@ -12,7 +12,7 @@ section {
 ul {
   height: 2rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   list-style-type: none;
   background-color: #2e2e38;
@@ -55,12 +55,13 @@ ul {
   align-items: center;
   width: fit-content;
   height: 100%;
+  padding: 0 0.5rem;
 }
 
 .icon {
   color: #eeeeee;
   font-size: 14px;
-  margin: 0 1rem;
+  margin: 0 0.75rem;
 }
 
 .progress-container {
@@ -77,6 +78,6 @@ ul {
   font-size: 12px;
 }
 
-video::-webkit-media-controls {
-  display: none !important;
+.volume {
+  width: 63px;
 }
