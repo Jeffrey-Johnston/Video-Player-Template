@@ -1,7 +1,6 @@
-<section [ngClass]="completionStatus ? 'complete' : 'incomplete'">
-  <figure id="videoContainer">
-    <h2>Default Controls</h2>
-
+<figure id="videoContainer">
+  <h2>Default Controls</h2>
+  <section [ngClass]="completionStatus ? 'complete' : 'incomplete'">
     <video
       id="videoPlayer"
       controls
@@ -24,5 +23,5 @@
         <img alt="" src="" width="1024" height="428" />
       </object>
     </video>
-  </figure>
-</section>
+  </section>
+</figure>
