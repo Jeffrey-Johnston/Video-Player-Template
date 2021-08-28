@@ -1,1 +1,17 @@
-<app-video-player></app-video-player>
+<div class="btn-container">
+  <button
+    [ngClass]="showDefaultPlayer == true ? 'show' : 'hide'"
+    (click)="selectDefualt()"
+  >
+    Default Controls
+  </button>
+  <button
+    [ngClass]="showDefaultPlayer == false ? 'show' : 'hide'"
+    (click)="selectCustom()"
+  >
+    Custom Controls
+  </button>
+</div>
+
+<app-video-player *ngIf="showDefaultPlayer"></app-video-player>
+<app-custom-video-player *ngIf="!showDefaultPlayer"></app-custom-video-player>

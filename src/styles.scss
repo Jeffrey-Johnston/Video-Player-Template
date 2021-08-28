@@ -1,10 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
-*,
-body,
-html {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: lig;
 }
 
 body {
@@ -13,6 +12,24 @@ body {
 
 $primary-color: #2e2e38;
 $secondary-color: #eee;
+$alternate-color: #505061;
 
 $primary-text: #eee;
 $secondary-text: #2e2e38;
+
+figure {
+  margin: 7rem auto;
+  max-width: 900px;
+  min-width: 700px;
+}
+
+video {
+  width: 100%;
+}
+
+.complete {
+  border: 3px solid rgb(255, 225, 0);
+}
+
+.incomplete {
+}

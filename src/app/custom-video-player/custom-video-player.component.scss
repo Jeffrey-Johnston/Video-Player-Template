@@ -1,0 +1,82 @@
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+.controls {
+  width: 100%;
+  max-width: 900px;
+  min-width: 700px;
+}
+
+ul {
+  height: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none;
+  background-color: #2e2e38;
+  margin-bottom: 0 !important;
+}
+
+.controls .progress {
+  cursor: pointer;
+}
+
+.controls button {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.controls button:hover {
+  opacity: 0.5;
+}
+
+.controls progress span {
+  width: 0%;
+  height: 0.2px;
+  display: inline-block;
+  background-color: #eeeeee;
+}
+
+.controls progress::-moz-progress-bar {
+  background-color: #eeeeee;
+}
+
+.controls progress::-webkit-progress-value {
+  background-color: #eeeeee;
+}
+
+.icon-group {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: 100%;
+}
+
+.icon {
+  color: #eeeeee;
+  font-size: 14px;
+  margin: 0 1rem;
+}
+
+.progress-container {
+  width: 40vw;
+}
+
+.progress {
+  height: 4px;
+  width: 40vw;
+  max-width: 25rem;
+}
+
+.duration {
+  font-size: 12px;
+}
+
+video::-webkit-media-controls {
+  display: none !important;
+}

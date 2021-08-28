@@ -1,0 +1,34 @@
+$primary-color: #2e2e38;
+$secondary-color: #71717c;
+$alternate-color: #2e2e388c;
+
+$primary-text: #eee;
+$secondary-text: #2e2e38;
+
+button {
+  width: inherit;
+  border: none;
+  padding: 1rem;
+  font-weight: 500;
+}
+
+.btn-container {
+  position: absolute;
+  left: 50%;
+  top: 3rem;
+  transform: translate(-50%, 0);
+}
+
+.show {
+  color: $primary-text;
+  background-color: $primary-color;
+}
+
+.hide {
+  color: $secondary-text;
+  background-color: $alternate-color;
+}
+
+.hide:hover {
+  background-color: $secondary-color;
+}

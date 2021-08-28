@@ -27,6 +27,7 @@ export class VideoPlayerComponent implements OnInit {
       this.video.currentTime = this.supposedCurrentTime;
     }
   }
+
   videoEnded() {
     this.completionStatus = true;
   }
