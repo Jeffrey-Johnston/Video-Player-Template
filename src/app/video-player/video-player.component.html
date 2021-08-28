@@ -4,109 +4,23 @@
       id="videoPlayer"
       controls
       preload="metadata"
-      (loadedmetadata)="setVideoLength()"
       (timeupdate)="progressStatus()"
       (seeking)="seekingStatus()"
       (ended)="videoEnded()"
-      (click)="playPause()"
     >
-      <source src="assets\video\Rick roll clip lol.mp4" type="video/mp4" />
       <source
-        src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.webm"
-        type="video/webm"
+        src="assets\video\RealisticEarthSpinninginSpaceVidevo.mov"
+        type="video/mp4"
       />
-      <source
-        src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.ogg"
-        type="video/ogg"
-      />
-      <object
-        type="application/x-shockwave-flash"
-        data="https://jsoncompare.org/LearningContainer/SampleFiles/Video/MP4/Sample-MP4-Video-File-for-Testing.mp4"
-      >
-        <param
-          name="movie"
-          value="flash-player.swf?videoUrl=video/tears-of-steel-battle-clip-medium.mp4"
-        />
+      <source src="" type="video/webm" />
+      <source src="" type="video/ogg" />
+      <object type="application/x-shockwave-flash" data="">
+        <param name="movie" value="" />
         <param name="allowfullscreen" value="true" />
         <param name="wmode" value="transparent" />
-        <param
-          name="flashvars"
-          value="controlbar=over&amp;image=img/poster.jpg&amp;file=flash-player.swf?videoUrl=video/tears-of-steel-battle-clip-medium.mp4"
-        />
-        <!-- <img alt="" src="" width="1024" height="428" /> -->
+        <param name="flashvars" value="" />
+        <img alt="" src="" width="1024" height="428" />
       </object>
     </video>
-
-    <div id="video-controls" class="controls" data-state="visible">
-      <ul>
-        <div class="icon-group">
-          <li>
-            <button (click)="playPause()">
-              <fa-icon *ngIf="!isPlay" class="icon" [icon]="faPlay"></fa-icon>
-              <fa-icon *ngIf="isPlay" class="icon" [icon]="faPause"></fa-icon>
-            </button>
-          </li>
-          <li>
-            <button (click)="restart()">
-              <fa-icon class="icon" [icon]="faUndo"></fa-icon>
-            </button>
-          </li>
-          <li>
-            <button (click)="skip(-30)">
-              <fa-icon class="icon" [icon]="faStepBackward"></fa-icon>
-            </button>
-          </li>
-          <li>
-            <button (click)="skip(30)">
-              <fa-icon class="icon" [icon]="faStepForward"></fa-icon>
-            </button>
-          </li>
-        </div>
-        <div class="icon-group">
-          <li class="duration icon">
-            <span *ngIf="minutes < 10">0</span>{{ minutes }}:<span
-              *ngIf="seconds < 10"
-              >0</span
-            >{{ seconds }}/<span *ngIf="videoMinutes < 10">0</span
-            >{{ videoMinutes }}:<span *ngIf="videoSeconds < 10">0</span
-            >{{ videoSeconds }}
-          </li>
-          <li>
-            <progress
-              class="progress"
-              id="progress"
-              value="{{ progress }}"
-              min="0"
-              (click)="onProgressBarClick($event)"
-            >
-              <span id="progress-bar"></span>
-            </progress>
-          </li>
-        </div>
-        <div class="icon-group">
-          <li>
-            <button (click)="mute()">
-              <fa-icon class="icon" [icon]="faVolumeUp"></fa-icon>
-            </button>
-          </li>
-          <li>
-            <button>
-              <fa-icon class="icon" [icon]="faClosedCaptioning"></fa-icon>
-            </button>
-          </li>
-          <li>
-            <button id="fs" type="button" (click)="handleFullScreen()">
-              <fa-icon class="icon" [icon]="faExpand"></fa-icon>
-            </button>
-          </li>
-
-          <li>
-            <button id="fs" type="button">
-              <fa-icon class="icon" [icon]="faEllipsisH"></fa-icon>
-            </button>
-          </li>
-        </div>
-      </ul>
-    </div>
   </figure>
 </section>

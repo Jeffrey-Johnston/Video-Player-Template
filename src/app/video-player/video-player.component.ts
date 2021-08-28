@@ -1,15 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  faPlay,
-  faPause,
-  faVolumeUp,
-  faClosedCaptioning,
-  faExpand,
-  faEllipsisH,
-  faUndo,
-  faStepBackward,
-  faStepForward,
-} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-video-player',
@@ -17,85 +6,17 @@ import {
   styleUrls: ['./video-player.component.scss'],
 })
 export class VideoPlayerComponent implements OnInit {
-  //* state
-  isPlay: boolean = false;
-  fullScreenEnabled = !!document.fullscreenEnabled;
-  completionStatus: boolean = false;
-
-  //* elementas
   video!: any;
-  progressBar!: any;
-
-  //* progress counter
-  totalSeconds!: number;
-  videoSeconds!: number;
-  videoMinutes!: number;
-  minutes!: number;
-  seconds!: number;
-
-  //* progress bar
-  progress!: number;
-  percentage!: number;
+  completionStatus: boolean = false;
   supposedCurrentTime: number = 0;
-
-  //* icons
-  faPlay = faPlay;
-  faPause = faPause;
-  faVolumeUp = faVolumeUp;
-  faClosedCaptioning = faClosedCaptioning;
-  faExpand = faExpand;
-  faEllipsisH = faEllipsisH;
-  faUndo = faUndo;
-  faStepBackward = faStepBackward;
-  faStepForward = faStepForward;
 
   constructor() {}
 
   ngOnInit(): void {
     this.video = document.getElementById('videoPlayer');
-    this.progressBar = document.getElementById('progress');
-    this.progressStatus();
-  }
-
-  playPause() {
-    if (this.video.paused) {
-      this.isPlay = true;
-      this.video.play();
-    } else {
-      this.isPlay = false;
-      this.video.pause();
-    }
-  }
-  restart() {
-    this.video.currentTime = 0;
-    this.video.pause();
-    this.isPlay = false;
-  }
-
-  skip(seconds: number) {
-    this.video.currentTime = this.video.currentTime + seconds;
-  }
-
-  mute() {
-    this.video.muted = !this.video.muted;
   }
 
   progressStatus() {
-    //* timer
-    this.totalSeconds = this.video.currentTime;
-    this.minutes = Math.floor(this.totalSeconds / 60);
-    if (this.totalSeconds >= 60) {
-      this.seconds = Math.floor(this.totalSeconds - this.minutes * 60);
-    } else {
-      this.seconds = Math.floor(this.totalSeconds);
-    }
-    //* progress bar
-    if (this.video.currentTime === 0) {
-      this.progress = 0;
-    } else {
-      this.progress = this.video.currentTime / this.video.duration;
-    }
-    //* sets current time to 0 onInit
     if (!this.video.seeking && this.completionStatus === false) {
       this.supposedCurrentTime = this.video.currentTime;
     }
@@ -108,25 +29,5 @@ export class VideoPlayerComponent implements OnInit {
   }
   videoEnded() {
     this.completionStatus = true;
-    this.isPlay = false;
   }
-
-  setVideoLength() {
-    this.videoMinutes = Math.floor(this.video.duration / 60);
-    if (this.video.duration >= 60) {
-      this.videoSeconds = Math.floor(
-        this.video.duration - this.videoMinutes * 60
-      );
-    } else {
-      this.videoSeconds = Math.round(this.video.duration);
-    }
-  }
-
-  onProgressBarClick(e: any) {
-    const progressTime =
-      (e.offsetX / this.progressBar.offsetWidth) * this.video.duration;
-    this.video.currentTime = progressTime;
-  }
-
-  handleFullScreen() {}
 }
