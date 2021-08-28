@@ -1,26 +1,24 @@
-<section class="backdrop">
-  <figure id="videoContainer">
-    <video
-      id="videoPlayer"
-      controls
-      preload="metadata"
-      (timeupdate)="progressStatus()"
-      (seeking)="seekingStatus()"
-      (ended)="videoEnded()"
-    >
-      <source
-        src="assets\video\RealisticEarthSpinninginSpaceVidevo.mov"
-        type="video/mp4"
-      />
-      <source src="" type="video/webm" />
-      <source src="" type="video/ogg" />
-      <object type="application/x-shockwave-flash" data="">
-        <param name="movie" value="" />
-        <param name="allowfullscreen" value="true" />
-        <param name="wmode" value="transparent" />
-        <param name="flashvars" value="" />
-        <img alt="" src="" width="1024" height="428" />
-      </object>
-    </video>
-  </figure>
-</section>
+<figure id="videoContainer">
+  <video
+    id="videoPlayer"
+    controls
+    preload="metadata"
+    (timeupdate)="progressStatus()"
+    (seeking)="seekingStatus()"
+    (ended)="videoEnded()"
+  >
+    <source
+      src="assets\video\RealisticEarthSpinninginSpaceVidevo.mov"
+      type="video/mp4"
+    />
+    <source src="" type="video/webm" />
+    <source src="" type="video/ogg" />
+    <object type="application/x-shockwave-flash" data="">
+      <param name="movie" value="" />
+      <param name="allowfullscreen" value="true" />
+      <param name="wmode" value="transparent" />
+      <param name="flashvars" value="" />
+      <img alt="" src="" width="1024" height="428" />
+    </object>
+  </video>
+</figure>
