@@ -17,7 +17,7 @@ export class VideoPlayerComponent implements OnInit {
   }
 
   progressStatus() {
-    if (!this.video.seeking && this.completionStatus === false) {
+    if (!this.video.seeking && !this.completionStatus) {
       this.supposedCurrentTime = this.video.currentTime;
     }
   }

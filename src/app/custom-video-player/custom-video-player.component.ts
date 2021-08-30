@@ -60,30 +60,6 @@ export class CustomVideoPlayerComponent implements OnInit {
     this.progressStatus();
   }
 
-  playPause() {
-    if (this.video.paused) {
-      this.isPlay = true;
-      this.video.play();
-    } else {
-      this.isPlay = false;
-      this.video.pause();
-    }
-  }
-  restart() {
-    this.video.currentTime = 0;
-    this.video.pause();
-    this.isPlay = false;
-  }
-
-  skip(seconds: number) {
-    this.video.currentTime = this.video.currentTime + seconds;
-  }
-
-  mute() {
-    this.video.muted = !this.video.muted;
-    this.isMute = !this.isMute;
-  }
-
   progressStatus() {
     //* timer
     this.totalSeconds = this.video.currentTime;
@@ -100,7 +76,7 @@ export class CustomVideoPlayerComponent implements OnInit {
       this.progress = this.video.currentTime / this.video.duration;
     }
     //* sets current time to 0 onInit
-    if (!this.video.seeking && this.completionStatus === false) {
+    if (!this.video.seeking && !this.completionStatus) {
       this.supposedCurrentTime = this.video.currentTime;
     }
   }
@@ -124,6 +100,30 @@ export class CustomVideoPlayerComponent implements OnInit {
     } else {
       this.videoSeconds = Math.round(this.video.duration);
     }
+  }
+
+  playPause() {
+    if (this.video.paused) {
+      this.isPlay = true;
+      this.video.play();
+    } else {
+      this.isPlay = false;
+      this.video.pause();
+    }
+  }
+  restart() {
+    this.video.currentTime = 0;
+    this.video.pause();
+    this.isPlay = false;
+  }
+
+  skip(seconds: number) {
+    this.video.currentTime = this.video.currentTime + seconds;
+  }
+
+  mute() {
+    this.video.muted = !this.video.muted;
+    this.isMute = !this.isMute;
   }
 
   onProgressBarClick(e: any) {
