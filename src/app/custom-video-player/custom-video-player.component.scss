@@ -55,13 +55,12 @@ ul {
   align-items: center;
   width: fit-content;
   height: 100%;
-  padding: 0 0.5rem;
 }
 
 .icon {
   color: #eeeeee;
   font-size: 14px;
-  margin: 0 0.5rem;
+  margin: 0 0.75rem;
 }
 
 .progress-container {
@@ -70,8 +69,8 @@ ul {
 
 .progress {
   height: 4px;
-  width: 40vw;
-  max-width: 15rem;
+  width: 20rem;
+  max-width: 25rem;
 }
 
 .duration {
